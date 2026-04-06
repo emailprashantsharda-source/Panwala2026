@@ -697,67 +697,45 @@ render();
 <html>
 
 <head>
-  <title>Sales App</title>
+  <title>Your App</title>
 
-  <!-- Firebase -->
-  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+  <!-- Firebase SDK -->
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+
 </head>
 
 <body>
 
-<h2>Sales Entry</h2>
+  <!-- YOUR EXISTING APP UI (DO NOT TOUCH) -->
 
-<input id="item" placeholder="Item name"><br><br>
-<input id="price" placeholder="Price"><br><br>
+  <script>
+    const firebaseConfig = {
+      apiKey: "YOUR_API_KEY",
+      authDomain: "YOUR_AUTH",
+      projectId: "YOUR_PROJECT_ID"
+    };
 
-<button onclick="saveData()">Save</button>
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
 
-<script>
-  const firebaseConfig = {
-  apiKey: "AIzaSyBdbdcHaHY0ePuiRB8hJg-CGbmqUaRnBsg",
-  authDomain: "kiryana-shop-47488.firebaseapp.com",
-  projectId: "kiryana-shop-47488",
-  storageBucket: "kiryana-shop-47488.firebasestorage.app",
-  };  
+    const db = firebase.firestore();
 
-  firebase.initializeApp(firebaseConfig);
-  const db = firebase.firestore();
-
-  function saveData() {
-    const item = document.getElementById("item").value;
-    const price = Number(document.getElementById("price").value);
-
+    // OPTIONAL: silent test (no UI)
     db.collection("sales").add({
-      item: item,
-      price: price,
+      item: "Auto Test",
+      price: 10,
       time: new Date()
     })
-    .then(() => {
-      alert("Saved!");
-      document.getElementById("item").value = "";
-      document.getElementById("price").value = "";
-    })
-    .catch((error) => {
-      console.error(error);
-    });
-  }
-</script>
-<button onclick="saveData()" 
-style="
-position:fixed;
-bottom:80px;
-right:20px;
-background:#28a745;
-color:white;
-padding:15px 20px;
-border:none;
-border-radius:10px;
-font-size:16px;
-z-index:9999;
-">
-  Save
-</button>
+    .then(() => console.log("Saved silently"))
+    .catch(err => console.error(err));
+
+  </script>
+
+</body>
+
+</html>
+
 </body>
 </html>
         
