@@ -693,59 +693,56 @@ function rstA(){
 render();
 
 </script>
-
-        time: new Date()
-      });
-
-      alert("Saved test data!");
-    }
-  </script>
 <!DOCTYPE html>
 <html>
 
 <head>
-  <title>Your Page</title>
+  <title>Sales App</title>
 
-  <!-- ✅ Firebase scripts go here -->
+  <!-- Firebase -->
   <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
   <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
-
 </head>
 
 <body>
 
-  <!-- ✅ Your existing app content stays here -->
+<h2>Sales Entry</h2>
 
+<input id="item" placeholder="Item name"><br><br>
+<input id="price" placeholder="Price"><br><br>
 
+<button onclick="saveData()">Save</button>
 
-  <!-- ✅ PASTE THIS AT THE VERY END (just above </body>) -->
-  <button onclick="testFirebase()" 
-  style="position:fixed; bottom:20px; right:20px;">
-    Test Save
-  </button>
+<script>
+  const firebaseConfig = {
+    apiKey: "PASTE",
+    authDomain: "PASTE",
+    projectId: "PASTE"
+  };
 
-  <script>
-    const firebaseConfig = {
-      apiKey: "PASTE",
-      authDomain: "PASTE",
-      projectId: "PASTE"
-    };
+  firebase.initializeApp(firebaseConfig);
+  const db = firebase.firestore();
 
-    firebase.initializeApp(firebaseConfig);
-    const db = firebase.firestore();
+  function saveData() {
+    const item = document.getElementById("item").value;
+    const price = Number(document.getElementById("price").value);
 
-    function testFirebase() {
-      db.collection("sales").add({
-        item: "Test",
-        price: 10,
-        time: new Date()
-      })
-      .then(() => alert("Saved!"))
-      .catch((error) => console.error(error));
-    }
-  </script>
-  <!-- ✅ END -->
-
+    db.collection("sales").add({
+      item: item,
+      price: price,
+      time: new Date()
+    })
+    .then(() => {
+      alert("Saved!");
+      document.getElementById("item").value = "";
+      document.getElementById("price").value = "";
+    })
+    .catch((error) => {
+      console.error(error);
+    });
+  }
+</script>
 
 </body>
 </html>
+        
