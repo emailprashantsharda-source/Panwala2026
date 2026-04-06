@@ -47,9 +47,7 @@ input[type=number]::-webkit-inner-spin-button{-webkit-appearance:none}
 </style>
 </head>
 <body>
-  <input id="item" placeholder="Item name">
-<input id="price" placeholder="Price">
-<button onclick="saveSale()">Save Sale</button>
+  
 <div id='pg-dashboard' class='page active'></div>
 <div id='pg-bill' class='page'></div>
 <div id='pg-stock' class='page'>
@@ -82,7 +80,9 @@ input[type=number]::-webkit-inner-spin-button{-webkit-appearance:none}
 </div>
 <div id='toast'></div>
 <script>
-
+<input id="item" placeholder="Item name">
+<input id="price" placeholder="Price">
+<button onclick="saveSale()">Save Sale</button>
 const td=()=>new Date().toISOString().split("T")[0];
 const fc=n=>"Rs."+Number(n||0).toLocaleString("en-IN",{maximumFractionDigits:1});
 const gid=()=>Date.now()+Math.floor(Math.random()*9999);
