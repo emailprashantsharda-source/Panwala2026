@@ -694,3 +694,30 @@ render();
 </script>
 </body>
 </html>
+<!-- Firebase -->
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore-compat.js"></script>
+
+<script>
+  const firebaseConfig = {
+    apiKey: "PASTE_YOURS",
+    authDomain: "PASTE_YOURS",
+    projectId: "PASTE_YOURS",
+  };
+
+  firebase.initializeApp(firebaseConfig);
+  const db = firebase.firestore();
+
+  function saveSale() {
+    var item = document.getElementById("item").value;
+    var price = document.getElementById("price").value;
+
+    db.collection("sales").add({
+      item: item,
+      price: price,
+      time: new Date()
+    });
+
+    alert("Saved successfully!");
+  }
+</script>
