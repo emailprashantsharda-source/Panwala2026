@@ -47,7 +47,39 @@ input[type=number]::-webkit-inner-spin-button{-webkit-appearance:none}
 </style>
 </head>
 <body>
-  
+ <!DOCTYPE html>
+<html>
+
+<head>
+  <title>My App</title>
+</head>
+
+<body>
+
+<!-- ✅ PASTE LOGIN UI HERE (RIGHT AFTER BODY) -->
+<div id="login-screen" style="padding:20px; background:#fff;">
+  <h2>Login Karein</h2>
+
+  <input id="phone" placeholder="10 digit mobile number" />
+  <br><br>
+
+  <div id="recaptcha-container"></div>
+  <br>
+
+  <button onclick="sendOTP()">OTP Bhejo</button>
+
+  <br><br>
+
+  <input id="otp" placeholder="OTP daalein" />
+  <br><br>
+
+  <button onclick="verifyOTP()">Verify</button>
+</div>
+
+<!-- your existing app UI below this -->
+
+</body>
+</html> 
 <div id='pg-dashboard' class='page active'></div>
 <div id='pg-bill' class='page'></div>
 <div id='pg-stock' class='page'>
